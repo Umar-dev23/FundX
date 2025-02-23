@@ -9,7 +9,7 @@ import SignupScreen from "./screens/SignupScreen";
 import LoginScreen from "./screens/LoginScreen";
 import ProfileScreen from "./screens/ProfileScreen";
 import EditProfileScreen from "./screens/EditProfileScreen";
-
+import ContactSupportScreen from "./screens/contactSupport";
 const Stack = createStackNavigator();
 
 export default function App() {
@@ -41,6 +41,7 @@ export default function App() {
         <Stack.Screen name="Login" component={LoginScreen} />
         <Stack.Screen name="Profile" component={ProfileScreen} />
         <Stack.Screen name="EditProfile" component={EditProfileScreen} />
+        <Stack.Screen name="ContactSupport" component={ContactSupportScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );
