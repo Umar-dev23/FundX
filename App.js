@@ -11,6 +11,7 @@ import ProfileScreen from "./screens/ProfileScreen";
 import EditProfileScreen from "./screens/EditProfileScreen";
 import ContactSupportScreen from "./screens/contactSupport";
 import HomeScreen from "./screens/HomeScreen";
+import createCompany from "./screens/createCompany"
 const Stack = createStackNavigator();
 
 export default function App() {
@@ -35,7 +36,7 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator
-        initialRouteName="Login"
+        initialRouteName="createCompany"
         screenOptions={{
           headerShown: false,
           cardStyle: { backgroundColor: "#fff" },
@@ -47,6 +48,7 @@ export default function App() {
         <Stack.Screen name="HomeScreen" component={HomeScreen} />
         <Stack.Screen name="EditProfile" component={EditProfileScreen} />
         <Stack.Screen name="ContactSupport" component={ContactSupportScreen} />
+        <Stack.Screen name="createCompany" component={createCompany} />
       </Stack.Navigator>
     </NavigationContainer>
   );
