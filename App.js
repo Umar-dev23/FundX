@@ -10,6 +10,7 @@ import LoginScreen from "./screens/LoginScreen";
 import ProfileScreen from "./screens/ProfileScreen";
 import EditProfileScreen from "./screens/EditProfileScreen";
 import ContactSupportScreen from "./screens/contactSupport";
+import HomeScreen from "./screens/HomeScreen";
 const Stack = createStackNavigator();
 
 export default function App() {
@@ -21,7 +22,10 @@ export default function App() {
       console.log("App state changed to:", nextAppState);
     };
 
-    const subscription = AppState.addEventListener("change", handleAppStateChange);
+    const subscription = AppState.addEventListener(
+      "change",
+      handleAppStateChange
+    );
 
     return () => {
       subscription.remove(); // Cleanup when component unmounts
@@ -40,6 +44,7 @@ export default function App() {
         <Stack.Screen name="Signup" component={SignupScreen} />
         <Stack.Screen name="Login" component={LoginScreen} />
         <Stack.Screen name="Profile" component={ProfileScreen} />
+        <Stack.Screen name="HomeScreen" component={HomeScreen} />
         <Stack.Screen name="EditProfile" component={EditProfileScreen} />
         <Stack.Screen name="ContactSupport" component={ContactSupportScreen} />
       </Stack.Navigator>

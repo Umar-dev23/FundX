@@ -1,9 +1,17 @@
-import React, { useState, useEffect } from 'react';
-import { View, Text, TextInput, TouchableOpacity, StyleSheet, Alert, Platform } from 'react-native';
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import { Ionicons } from '@expo/vector-icons';
-import * as Notifications from 'expo-notifications';
-import Constants from 'expo-constants';
+import React, { useState, useEffect } from "react";
+import {
+  View,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  StyleSheet,
+  Alert,
+  Platform,
+} from "react-native";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { Ionicons } from "@expo/vector-icons";
+import * as Notifications from "expo-notifications";
+import Constants from "expo-constants";
 
 // Configure how notifications are handled when received.
 Notifications.setNotificationHandler({
@@ -15,18 +23,18 @@ Notifications.setNotificationHandler({
 });
 
 const LoginScreen = ({ navigation }) => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
 
   useEffect(() => {
     registerForPushNotificationsAsync();
     // On Android, create a notification channel
-    if (Platform.OS === 'android') {
-      Notifications.setNotificationChannelAsync('login-success-channel', {
-        name: 'Login Success Channel',
+    if (Platform.OS === "android") {
+      Notifications.setNotificationChannelAsync("login-success-channel", {
+        name: "Login Success Channel",
         importance: Notifications.AndroidImportance.HIGH,
-        sound: 'default',
+        sound: "default",
       });
     }
   }, []);
@@ -34,18 +42,21 @@ const LoginScreen = ({ navigation }) => {
   // Request permissions to show notifications
   const registerForPushNotificationsAsync = async () => {
     const { status } = await Notifications.requestPermissionsAsync();
-    if (status !== 'granted') {
-      Alert.alert('Permission required', 'Permission to receive notifications was denied');
+    if (status !== "granted") {
+      Alert.alert(
+        "Permission required",
+        "Permission to receive notifications was denied"
+      );
     }
   };
 
   const handleLogin = async () => {
     if (!email || !password) {
-      Alert.alert('Error', 'Please fill in all fields');
+      Alert.alert("Error", "Please fill in all fields");
       return;
     }
     try {
-      const storedUserData = await AsyncStorage.getItem('userData');
+      const storedUserData = await AsyncStorage.getItem("userData");
       if (storedUserData) {
         const userData = JSON.parse(storedUserData);
         if (userData.email === email && userData.password === password) {
@@ -54,23 +65,23 @@ const LoginScreen = ({ navigation }) => {
             content: {
               title: "🎉 Login Successful!",
               body: "Welcome back to your account!",
-              sound: 'default',
+              sound: "default",
               // You can include additional data if needed
-              data: { extraData: 'Optional extra data' },
+              data: { extraData: "Optional extra data" },
             },
             trigger: null, // Immediate trigger
           });
           // Navigate to the Profile screen
-          navigation.replace('Profile');
+          navigation.replace("Profile");
         } else {
-          Alert.alert('Error', 'Invalid credentials');
+          Alert.alert("Error", "Invalid credentials");
         }
       } else {
-        Alert.alert('Error', 'No account found');
+        Alert.alert("Error", "No account found");
       }
     } catch (error) {
-      console.error('Login error:', error);
-      Alert.alert('Error', 'Login failed');
+      console.error("Login error:", error);
+      Alert.alert("Error", "Login failed");
     }
   };
 
@@ -101,7 +112,11 @@ const LoginScreen = ({ navigation }) => {
           onChangeText={setPassword}
         />
         <TouchableOpacity onPress={() => setShowPassword(!showPassword)}>
-          <Ionicons name={showPassword ? "eye-outline" : "eye-off-outline"} size={24} color="#999" />
+          <Ionicons
+            name={showPassword ? "eye-outline" : "eye-off-outline"}
+            size={24}
+            color="#999"
+          />
         </TouchableOpacity>
       </View>
 
@@ -109,7 +124,10 @@ const LoginScreen = ({ navigation }) => {
         <Text style={styles.buttonText}>Log In</Text>
       </TouchableOpacity>
 
-      <TouchableOpacity style={styles.supportButton} onPress={() => navigation.navigate('ContactSupport')}>
+      <TouchableOpacity
+        style={styles.supportButton}
+        onPress={() => navigation.navigate("ContactSupport")}
+      >
         <Text style={styles.supportButtonText}>Contact Support</Text>
       </TouchableOpacity>
 
@@ -117,9 +135,10 @@ const LoginScreen = ({ navigation }) => {
         <Text style={styles.forgotPassword}>Forgot your password?</Text>
       </TouchableOpacity>
 
-      <TouchableOpacity onPress={() => navigation.navigate('Signup')}>
+      <TouchableOpacity onPress={() => navigation.navigate("Signup")}>
         <Text style={styles.signupText}>
-          Don't have an account? <Text style={styles.signupLink}>Sign up here.</Text>
+          Don't have an account?{" "}
+          <Text style={styles.signupLink}>Sign up here.</Text>
         </Text>
       </TouchableOpacity>
     </View>
@@ -129,13 +148,13 @@ const LoginScreen = ({ navigation }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: "#fff",
     padding: 20,
   },
   title: {
     fontSize: 28,
-    fontWeight: '600',
-    color: '#FF7B7B',
+    fontWeight: "600",
+    color: "#FF7B7B",
     marginBottom: 10,
     marginTop: 40,
   },
@@ -153,25 +172,25 @@ const styles = StyleSheet.create({
   },
   subtitle: {
     fontSize: 16,
-    color: '#666',
+    color: "#666",
     marginBottom: 30,
   },
   label: {
     fontSize: 16,
-    color: '#FF7B7B',
+    color: "#FF7B7B",
     marginBottom: 8,
   },
   input: {
-    backgroundColor: '#FFF2F2',
+    backgroundColor: "#FFF2F2",
     borderRadius: 8,
     padding: 15,
     marginBottom: 20,
     fontSize: 16,
   },
   passwordContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    backgroundColor: '#FFF2F2',
+    flexDirection: "row",
+    alignItems: "center",
+    backgroundColor: "#FFF2F2",
     borderRadius: 8,
     marginBottom: 20,
     paddingRight: 15,
@@ -182,63 +201,45 @@ const styles = StyleSheet.create({
     fontSize: 16,
   },
   button: {
-    backgroundColor: '#FF7B7B',
+    backgroundColor: "#FF7B7B",
     borderRadius: 8,
     padding: 18,
-    alignItems: 'center',
+    alignItems: "center",
     marginTop: 10,
   },
   buttonText: {
-    color: '#fff',
+    color: "#fff",
     fontSize: 16,
-    fontWeight: '600',
+    fontWeight: "600",
   },
   guestButton: {
-    backgroundColor: '#FFF2F2',
+    backgroundColor: "#FFF2F2",
     borderRadius: 8,
     padding: 18,
-    alignItems: 'center',
+    alignItems: "center",
     marginTop: 15,
   },
   guestButtonText: {
-    color: '#FF7B7B',
+    color: "#FF7B7B",
     fontSize: 16,
-    fontWeight: '600',
+    fontWeight: "600",
   },
   forgotPassword: {
-    color: '#FF7B7B',
-    textAlign: 'center',
+    color: "#FF7B7B",
+    textAlign: "center",
     marginTop: 20,
   },
   signupText: {
-    textAlign: 'center',
+    textAlign: "center",
     marginTop: 20,
-    color: '#666',
+    color: "#666",
   },
   signupLink: {
-    color: '#FF7B7B',
+    color: "#FF7B7B",
   },
 });
 
 export default LoginScreen;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 // import React, { useState } from 'react';
 // import { View, Text, TextInput, TouchableOpacity, StyleSheet, Alert } from 'react-native';
@@ -326,8 +327,6 @@ export default LoginScreen;
 //   );
 // };
 
-
-
 // const styles = StyleSheet.create({
 //   container: {
 //     flex: 1,
@@ -411,4 +410,3 @@ export default LoginScreen;
 // });
 
 // export default LoginScreen;
-
