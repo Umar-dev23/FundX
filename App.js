@@ -11,7 +11,8 @@ import ProfileScreen from "./screens/ProfileScreen";
 import EditProfileScreen from "./screens/EditProfileScreen";
 import ContactSupportScreen from "./screens/contactSupport";
 import HomeScreen from "./screens/HomeScreen";
-import createCompany from "./screens/createCompany"
+import createCompany from "./screens/createCompany";
+import Company from "./screens/Company";
 const Stack = createStackNavigator();
 
 export default function App() {
@@ -49,6 +50,7 @@ export default function App() {
         <Stack.Screen name="EditProfile" component={EditProfileScreen} />
         <Stack.Screen name="ContactSupport" component={ContactSupportScreen} />
         <Stack.Screen name="createCompany" component={createCompany} />
+        <Stack.Screen name="Company" component={Company} />
       </Stack.Navigator>
     </NavigationContainer>
   );
