@@ -13,6 +13,9 @@ import ContactSupportScreen from "./screens/contactSupport";
 import HomeScreen from "./screens/HomeScreen";
 import createCompany from "./screens/createCompany";
 import Company from "./screens/Company";
+import OrientataionScreen from "./screens/Orientationscreen";
+import NavigationHeader from './screens/NavigationHeader'; // <--- Import your bottom nav
+
 const Stack = createStackNavigator();
 
 export default function App() {
@@ -37,13 +40,13 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator
-        initialRouteName="createCompany"
+        initialRouteName="MainTabs"
         screenOptions={{
           headerShown: false,
           cardStyle: { backgroundColor: "#fff" },
         }}
       >
-        <Stack.Screen name="Signup" component={SignupScreen} />
+        {/* <Stack.Screen name="Signup" component={SignupScreen} />
         <Stack.Screen name="Login" component={LoginScreen} />
         <Stack.Screen name="Profile" component={ProfileScreen} />
         <Stack.Screen name="HomeScreen" component={HomeScreen} />
@@ -51,6 +54,15 @@ export default function App() {
         <Stack.Screen name="ContactSupport" component={ContactSupportScreen} />
         <Stack.Screen name="createCompany" component={createCompany} />
         <Stack.Screen name="Company" component={Company} />
+        <Stack.Screen name="OrientataionScreen" component={OrientataionScreen} />
+        */}
+
+
+        <Stack.Screen
+          name="MainTabs"
+          component={NavigationHeader}
+          options={{ headerShown: false }} // Because the bottom tabs will manage navigation
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );
