@@ -30,7 +30,7 @@ const buttonEvents = () => {
                     toValue: { x: 0, y: 0 },
                     useNativeDriver: false,
                 }).start();
-                console.log('Swipe Released', 'You moved the box!');
+                Alert.alert('Swipe Released', 'You moved the box!');
             },
         })
     ).current;

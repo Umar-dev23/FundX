@@ -15,6 +15,7 @@ const OrientataionScreen = () => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
+       // flexDirection: isPotrait ? 'row' : 'column',
         justifyContent: 'center',
         alignItems: 'center',
     },
