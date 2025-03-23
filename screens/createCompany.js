@@ -8,7 +8,7 @@ import {
   Alert,
   Platform,
 } from "react-native";
-import Title from "./../components/title.js"; // ✅ Import correctly with an uppercase "Title"
+import Title from "./../components/title.js"; 
 import { Picker } from "@react-native-picker/picker";
 import Button from "./../components/buttons.js";
 import * as DocumentPicker from "expo-document-picker";
