@@ -9,6 +9,9 @@ import buttonEvents from "./buttonEvents";
 import OrientataionScreen from "./Orientationscreen";
 import T1Welcome from "./Tasks/T1Welcome";
 import T2Settings from "./Tasks/T2Settings";
+import T3NotesScreen from "./Tasks/T3NotesScreen";
+import FeedbackScreen from "./FeedbackScreen";
+import MapScreen from "./MapScreen";
 
 const Tab = createBottomTabNavigator();
 
@@ -22,16 +25,17 @@ export default function NavigationHeader() {
           let iconName;
 
           switch (route.name) {
-            case "Task1":
-              iconName = "home";
+            case "Feedback":
+              iconName = "chatbubble-ellipses";
+              //iconName = "home";
               break;
-            case "Settings":
-              iconName = "settings";
+            case "Map":
+              iconName = "map";
               break;
             case "Profile":
               iconName = "person-circle";
               break;
-            case "Task3-Events":
+            case "Notes":
               iconName = "briefcase";
               break;
             default:
@@ -47,10 +51,10 @@ export default function NavigationHeader() {
         headerShown: false, // Show/hide top header if you want
       })}
     >
-      <Tab.Screen name="Task1" component={T1Welcome} />
+      <Tab.Screen name="Feedback" component={FeedbackScreen} />
+      <Tab.Screen name="Map" component={MapScreen} />
       <Tab.Screen name="Settings" component={T2Settings} />
-      <Tab.Screen name="Profile" component={ProfileScreen} />
-      <Tab.Screen name="Task3-Events" component={buttonEvents} />
+      <Tab.Screen name="Notes" component={T3NotesScreen} />
     </Tab.Navigator>
   );
 }
