@@ -12,24 +12,26 @@ import T2Settings from "./Tasks/T2Settings";
 import T3NotesScreen from "./Tasks/T3NotesScreen";
 import FeedbackScreen from "./FeedbackScreen";
 import MapScreen from "./MapScreen";
+import ApiScreen1 from "./Week14Tasks/ApiScreen1";
+import Contactus from "./Contactus";
 
 const Tab = createBottomTabNavigator();
 
 export default function NavigationHeader() {
   return (
     <Tab.Navigator
-      initialRouteName="Task1"
+      initialRouteName="Public_API"
       screenOptions={({ route }) => ({
         // Configure icons based on the route/screen name
         tabBarIcon: ({ color, size }) => {
           let iconName;
 
           switch (route.name) {
-            case "Feedback":
+            case "Public_API":
               iconName = "chatbubble-ellipses";
               //iconName = "home";
               break;
-            case "Map":
+            case "Contact Us":
               iconName = "map";
               break;
             case "Profile":
@@ -51,8 +53,8 @@ export default function NavigationHeader() {
         headerShown: false, // Show/hide top header if you want
       })}
     >
-      <Tab.Screen name="Feedback" component={FeedbackScreen} />
-      <Tab.Screen name="Map" component={MapScreen} />
+      <Tab.Screen name="Public_API" component={ApiScreen1} />
+      <Tab.Screen name="Contact Us" component={Contactus} />
       <Tab.Screen name="Settings" component={T2Settings} />
       <Tab.Screen name="Notes" component={T3NotesScreen} />
     </Tab.Navigator>
