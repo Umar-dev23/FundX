@@ -14,6 +14,8 @@ import FeedbackScreen from "./FeedbackScreen";
 import MapScreen from "./MapScreen";
 import ApiScreen1 from "./Week14Tasks/ApiScreen1";
 import Contactus from "./Contactus";
+import CommentScreen from "./Week14Tasks/CommentScreen";
+import ContactUsAxiosScreen from "./Week14Tasks/ContactUsAxiosScreen";
 
 const Tab = createBottomTabNavigator();
 
@@ -34,10 +36,10 @@ export default function NavigationHeader() {
             case "Contact Us":
               iconName = "map";
               break;
-            case "Profile":
+            case "Comments":
               iconName = "person-circle";
               break;
-            case "Notes":
+            case "Error Contact":
               iconName = "briefcase";
               break;
             default:
@@ -55,8 +57,8 @@ export default function NavigationHeader() {
     >
       <Tab.Screen name="Public_API" component={ApiScreen1} />
       <Tab.Screen name="Contact Us" component={Contactus} />
-      <Tab.Screen name="Settings" component={T2Settings} />
-      <Tab.Screen name="Notes" component={T3NotesScreen} />
+      <Tab.Screen name="Comments" component={CommentScreen} />
+      <Tab.Screen name="Error Contact" component={ContactUsAxiosScreen} />
     </Tab.Navigator>
   );
 }

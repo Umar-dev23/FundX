@@ -27,7 +27,7 @@ const ContactUs = () => {
     setResponseMsg(null);
 
     try {
-      const res = await fetch("http://localhost:4000/contact-us", {
+      const res = await fetch("https://reimagined-orbit-4jg9rq6vj49wcw96-4000.app.github.dev/contact-us", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ name, email, message }),
@@ -100,8 +100,15 @@ const ContactUs = () => {
 
 const styles = StyleSheet.create({
   scrollView: {
+    padding: 20,
     flex: 1,
     backgroundColor: "#fff",
+  },
+  container: {
+    flex: 1,
+    padding: 20,
+    backgroundColor: '#fff',
+    justifyContent: 'center',
   },
   container: {
     padding: 20,

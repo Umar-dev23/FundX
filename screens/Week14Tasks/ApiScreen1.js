@@ -69,7 +69,7 @@ const styles = StyleSheet.create({
   screen: {
     flex: 1,
     backgroundColor: "#fff",
-    padding: 20,
+    marginTop: 12,
   },
   header: {
     fontSize: 24,

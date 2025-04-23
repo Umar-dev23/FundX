@@ -14,7 +14,8 @@ import HomeScreen from "./screens/HomeScreen";
 import createCompany from "./screens/createCompany";
 import Company from "./screens/Company";
 import OrientataionScreen from "./screens/Orientationscreen";
-import NavigationHeader from './screens/NavigationHeader'; // <--- Import your bottom nav
+import NavigationHeader from "./screens/NavigationHeader"; // <--- Import your bottom nav
+import Toast from "react-native-toast-message";
 
 const Stack = createStackNavigator();
 
@@ -57,13 +58,14 @@ export default function App() {
         <Stack.Screen name="OrientataionScreen" component={OrientataionScreen} />
         */}
 
-
         <Stack.Screen
           name="MainTabs"
           component={NavigationHeader}
           options={{ headerShown: false }} // Because the bottom tabs will manage navigation
         />
       </Stack.Navigator>
+      <Toast/>
     </NavigationContainer>
+    
   );
 }
