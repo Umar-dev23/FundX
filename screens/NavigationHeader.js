@@ -11,11 +11,13 @@ import T1Welcome from "./Tasks/T1Welcome";
 import T2Settings from "./Tasks/T2Settings";
 import T3NotesScreen from "./Tasks/T3NotesScreen";
 import FeedbackScreen from "./FeedbackScreen";
-import MapScreen from "./MapScreen";
 import ApiScreen1 from "./Week14Tasks/ApiScreen1";
 import Contactus from "./Contactus";
 import CommentScreen from "./Week14Tasks/CommentScreen";
 import ContactUsAxiosScreen from "./Week14Tasks/ContactUsAxiosScreen";
+import SmsScreen from "./sendSMS";
+import MapScreen1 from "./Maps1";
+import MapScreen2 from "./Maps2";
 
 const Tab = createBottomTabNavigator();
 
@@ -36,10 +38,10 @@ export default function NavigationHeader() {
             case "Contact Us":
               iconName = "map";
               break;
-            case "Comments":
+            case "MapScreen1":
               iconName = "person-circle";
               break;
-            case "Error Contact":
+            case "MapScreen2":
               iconName = "briefcase";
               break;
             default:
@@ -49,7 +51,7 @@ export default function NavigationHeader() {
 
           return <Ionicons name={iconName} size={size} color={color} />;
         },
-        // Active/inactive colors, etc.
+        // Active/sinactive colors, etc.
         tabBarActiveTintColor: "tomato",
         tabBarInactiveTintColor: "gray",
         headerShown: false, // Show/hide top header if you want
@@ -57,8 +59,8 @@ export default function NavigationHeader() {
     >
       <Tab.Screen name="Public_API" component={ApiScreen1} />
       <Tab.Screen name="Contact Us" component={Contactus} />
-      <Tab.Screen name="Comments" component={CommentScreen} />
-      <Tab.Screen name="Error Contact" component={ContactUsAxiosScreen} />
+      <Tab.Screen name="MapScreen2" component={MapScreen2} />
+      <Tab.Screen name="MapScreen1" component={MapScreen1} />
     </Tab.Navigator>
   );
 }

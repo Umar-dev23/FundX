@@ -23,6 +23,7 @@ const FeedbackScreen = () => {
     };
 
     try {
+      console.log(JSON.stringify(feedbackData));
       await AsyncStorage.setItem('userFeedback', JSON.stringify(feedbackData));
     } catch (error) {
       console.error('Error saving feedback:', error);
@@ -31,7 +32,7 @@ const FeedbackScreen = () => {
     // Prepare email content
     const subject = `Feedback from ${name}`;
     const body = `Name: ${name}\nEmail: ${email}\nRating: ${starRating}/5\n\nFeedback:\n${feedback}`;
-    
+    console.log(encodeURIComponent(body));
     // Create mailto URL
     const mailUrl = `mailto:umar.dev23@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
 
